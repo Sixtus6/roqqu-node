@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+    container_name: backend-roqqu
+    environment:
+      DATABASE_TYPE: sqlite
+      DATABASE_NAME: /app/database.sqlite  # SQLite file stored inside the container
+      JWT_SECRET: niyosecrete
+      API_PORT: 2002
+    ports:
+      - "2002:2002"
+    networks:
+      - backend-network
+    volumes:
+      - ./:/app
+      - /app/node_modules  
+    command: [ "sh", "-c", "npm install && npm run dev" ]
+
+networks:
+  backend-network:
+    driver: bridge
