@@ -1,13 +1,8 @@
 import { DBPORT, DBNAME, } from '../config/environment.config';
 import { Sequelize } from 'sequelize';
-// import { Account, initializeAccountModel } from './user.model';
-
-// import Relationships from './database.relationship';
-// import { Booking, initializeBookingModel } from './booking.model';
-// import { EventsModel, initializeEventModel } from './event.model';
-// import { initializeWaitingListModel, WaitingList } from './waiting_list.model';
-
-
+import { initializeUserModel } from '../model/user.model';
+import { initializeAddressModel } from '../model/address.model';
+import { initializePostModel } from '../model/post.model';
 
 const sequelize = new Sequelize({
     dialect: "sqlite",
@@ -20,10 +15,10 @@ const db: any = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// db.account = initializeAccountModel(sequelize);
-// db.booking = initializeBookingModel(sequelize);
-// db.event = initializeEventModel(sequelize);
-// db.waitinglist = initializeWaitingListModel(sequelize);
+db.account = initializeUserModel(sequelize);
+db.address = initializeAddressModel(sequelize);
+db.post = initializePostModel(sequelize)
+
 
 
 // Relationships.group(Account, WaitingList, Booking, EventsModel);

@@ -1,6 +1,8 @@
 import bcrypt from 'bcryptjs';
 import { Association, DataTypes, Model, Sequelize } from 'sequelize';
-// import { Address } from './Address';
+import { Post } from './post.model';
+import { Address } from './address.model';
+
 class User extends Model {
     public id!: number;
     public name!: string;
