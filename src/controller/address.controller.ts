@@ -3,6 +3,7 @@ import AddressService from "../service/address.service";
 import { Request, Response } from 'express';
 
 class AddressController {
+
     static async getAddressByUserId(req: Request, res: Response): Promise<void> {
         try {
             const userId = parseInt(req.params.userID);
