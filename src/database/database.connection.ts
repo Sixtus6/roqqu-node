@@ -1,8 +1,9 @@
 import { DBPORT, DBNAME, } from '../config/environment.config';
 import { Sequelize } from 'sequelize';
-import { initializeUserModel } from '../model/user.model';
-import { initializeAddressModel } from '../model/address.model';
-import { initializePostModel } from '../model/post.model';
+import { initializeUserModel, User } from '../model/user.model';
+import { Address, initializeAddressModel } from '../model/address.model';
+import { initializePostModel, Post } from '../model/post.model';
+import Relationships from './database.relationship';
 
 const sequelize = new Sequelize({
     dialect: "sqlite",
@@ -20,8 +21,7 @@ db.address = initializeAddressModel(sequelize);
 db.post = initializePostModel(sequelize)
 
 
+Relationships.group(User, Address, Post);
 
-// Relationships.group(Account, WaitingList, Booking, EventsModel);
 
-//, Account, WaitingList, Booking, EventsModel 
 export { db };

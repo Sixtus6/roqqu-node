@@ -1,24 +1,21 @@
 // import { Account, Booking, WaitingList } from './database.connection';
 // import { EventsModel } from './event.model';
 
-// class Relationships {
-
-//     static group(AccountModel: typeof Account, WaitingListModel: typeof WaitingList, BookingModel: typeof Booking, EventModel: typeof EventsModel): void {
-//         AccountModel.hasMany(BookingModel);
-//         BookingModel.belongsTo(AccountModel);
-
-//         AccountModel.hasMany(WaitingListModel);
-//         WaitingListModel.belongsTo(AccountModel);
-
-//         EventModel.hasMany(BookingModel);
-//         BookingModel.belongsTo(EventModel);
-
-//         EventModel.hasMany(WaitingListModel);
-//         WaitingListModel.belongsTo(EventModel);
+import { Address } from "../model/address.model";
+import { Post } from "../model/post.model";
+import { User } from "../model/user.model";
 
 
 
-//     }
-// }
+class Relationships {
 
-// export default Relationships;
+    static group(UserModel: typeof User, AddressModel: typeof Address, PostModel: typeof Post): void {
+        UserModel.hasOne(AddressModel, { foreignKey: 'userId', as: 'address' });
+        UserModel.hasMany(PostModel, { foreignKey: 'userId', as: 'posts' });
+        AddressModel.belongsTo(UserModel, { foreignKey: 'userId', as: 'user' });
+        PostModel.belongsTo(UserModel, { foreignKey: 'userId', as: 'user' });
+
+    }
+}
+
+export default Relationships;
