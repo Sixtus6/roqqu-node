@@ -1,13 +1,14 @@
+import ApiResponse from "../config/response.config";
 import { User } from "../model/user.model";
 
 class UserService {
     static async createUser(body: any): Promise<any> {
         const existingUser = await User.findOne({ where: { email: body.email } });
         if (existingUser) {
-            return { code: 409, body: { error: true, message: 'User already exists' } };
+            return { code: ApiResponse.code.conflict, body: { error: true, message: ApiResponse.fail.account_conflict } };
         }
         const user = await User.create(body);
-        return { code: 201, body: { error: false, message: 'User created', data: user } };
+        return { code: ApiResponse.code.create, body: { error: false, message: ApiResponse.pass.register, data: user } };
     }
 
     static async getAllUsers(pageNumber: number, pageSize: number): Promise<any> {
