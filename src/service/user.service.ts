@@ -17,7 +17,7 @@ class UserService {
             offset: pageNumber * pageSize,
             attributes: { exclude: ['password'] },
         });
-        return { code: 200, body: { error: false, message: 'Users retrieved', data: users } };
+        return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.getUser, data: users } };
     }
 
     static async getUserById(id: string): Promise<any> {
