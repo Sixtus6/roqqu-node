@@ -4,6 +4,11 @@ import { Post } from "../model/post.model";
 class PostService {
     static async getPostsByUser(userId: number): Promise<any> {
         const posts = await Post.findAll({ where: { userId } });
+
+        if (!posts || posts.length === 0) {
+            return { code: ApiResponse.code.not_found, body: { error: true, message: ApiResponse.fail.not_found('Posts') } };
+        }
+
         return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.read, data: posts } };
     }
 
