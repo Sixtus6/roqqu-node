@@ -1,28 +1,25 @@
 const ApiResponse = {
-
     pass: {
         create: 'Created successfully',
         read: 'Fetched successfully',
         register: 'Account created successfully',
         getUsers: 'Users retrieved',
         getUser: 'User retrieved',
-        login: 'LoggedIn successfully',
-        sucess_event: "Event created successfully",
-
+        login: 'Logged in successfully',
+        success_event: 'Event created successfully',
+        userCount: 'Total user count retrieved',
     },
-
     fail: {
         bad_request: 'Bad Request',
-        conflict: 'Data Already exist',
+        conflict: 'Data Already exists',
         unauthorized: 'Unauthorized',
         adminUnauthorized: 'Admin Unauthorized',
         not_found: (meta: string) => `${meta} Not Found`,
         server: 'Internal Server Error',
         forbidden: 'Forbidden',
-        account_conflict: 'Account Already Exist',
+        account_conflict: 'Account Already Exists',
         login: "Email or Password don't match",
     },
-
     code: {
         create: 201,
         success: 200,
@@ -33,11 +30,6 @@ const ApiResponse = {
         not_found: 404,
         conflict: 409,
         server_error: 500,
-    }
-
-}
-
+    },
+};
 export default ApiResponse;
-// module.exports = ApiResponse;
-
-
