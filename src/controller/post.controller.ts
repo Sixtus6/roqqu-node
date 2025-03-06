@@ -1,6 +1,7 @@
 import ApiResponse from "../config/response.config";
 import { NextFunction, Request, Response } from "express";
 import PostService from "../service/post.service";
+
 class PostController {
     static async getPostsByUser(req: Request, res: Response): Promise<void> {
         try {

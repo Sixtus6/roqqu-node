@@ -18,7 +18,7 @@ const ApiResponse = {
         adminUnauthorized: 'Admin Unauthorized',
         not_found: (meta: string) => `${meta} Not Found`,
         server: 'Internal Server Error',
-        forbidden: 'Forbidden',
+        forbidden: 'Invalid ID',
         account_conflict: 'Account Already Exists',
         login: "Email or Password don't match",
     },

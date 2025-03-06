@@ -7,6 +7,7 @@ import { serverport } from './config/environment.config';
 import { db } from './database/database.connection';
 import userRoute from './routes/user.routes';
 import addressRouter from './routes/address.routes';
+import postRouter from './routes/post.routes';
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(cors(CORESOPTIONS));
 app.use(bodyParser.json());
 app.use('/user', userRoute);
 app.use('/addresses', addressRouter);
+app.use('/post', postRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', async (req: Request, res: Response) => {
     res.status(200).json('Hello World ROQQU');

@@ -4,6 +4,9 @@ import { User } from "../model/user.model";
 
 class AddressService {
     static async getAddressByUserId(userId: number): Promise<any> {
+        if (isNaN(userId)) {
+            return { code: ApiResponse.code.bad_request, body: { error: true, message: ApiResponse.fail.forbidden } };
+        }
         const address = await Address.findOne({ where: { userId } });
         if (!address) {
             return { code: ApiResponse.code.not_found, body: { error: true, message: ApiResponse.fail.not_found('Address') } };
