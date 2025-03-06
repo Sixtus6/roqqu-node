@@ -3,13 +3,15 @@ import { Address } from "../model/address.model";
 import { User } from "../model/user.model";
 
 class UserService {
+
     static async createUser(body: any): Promise<any> {
         const existingUser = await User.findOne({ where: { email: body.email } });
         if (existingUser) {
             return { code: ApiResponse.code.conflict, body: { error: true, message: ApiResponse.fail.account_conflict } };
         }
         const user = await User.create(body);
-        return { code: ApiResponse.code.create, body: { error: false, message: ApiResponse.pass.create, data: user } };
+        const { password, ...userWithoutPassword } = user.get({ plain: true });
+        return { code: ApiResponse.code.create, body: { error: false, message: ApiResponse.pass.create, data: userWithoutPassword } };
     }
 
     static async getAllUsers(pageNumber: number, pageSize: number): Promise<any> {

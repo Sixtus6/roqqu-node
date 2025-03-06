@@ -8,6 +8,7 @@ import { db } from './database/database.connection';
 import userRoute from './routes/user.routes';
 
 const app = express();
+
 app.use((req: Request, res: Response, next: NextFunction) => {
     const startTime = Date.now();
     res.on('finish', () => {
@@ -29,10 +30,10 @@ const CORESOPTIONS = {
 
 app.use(cors(CORESOPTIONS));
 app.use(bodyParser.json());
-app.use('/api/user', userRoute);
+app.use('/user', userRoute);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', async (req: Request, res: Response) => {
-    res.status(200).json('Hello World Sixtus');
+    res.status(200).json('Hello World ROQQU');
 });
 db.sequelize.sync({ force: !true }).then(() => {
     const server = app.listen(serverport, async () => {
