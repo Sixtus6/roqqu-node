@@ -65,4 +65,4 @@ Project Structure
  API Documentation
 
  ```
- https://github.com/Sixtus6/roqqu-node.git
+ https://documenter.getpostman.com/view/42904372/2sAYdmmoFv
