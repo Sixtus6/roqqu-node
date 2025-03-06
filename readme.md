@@ -60,3 +60,9 @@ Project Structure
 │       ├── post.service.ts  # Post-related business logic
 │       └── user.service.ts  # User-related business logic
 └── tsconfig.json  # TypeScript configuration file
+```
+
+ API Documentation
+
+ ```
+ https://github.com/Sixtus6/roqqu-node.git
