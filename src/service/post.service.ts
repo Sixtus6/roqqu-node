@@ -3,6 +3,7 @@ import { Post } from "../model/post.model";
 import { User } from "../model/user.model";
 
 class PostService {
+
     static async getPostsByUser(userId: number): Promise<any> {
         if (isNaN(userId)) {
             return { code: ApiResponse.code.bad_request, body: { error: true, message: ApiResponse.fail.forbidden } };
@@ -28,6 +29,9 @@ class PostService {
     }
 
     static async deletePost(id: number): Promise<any> {
+        if (isNaN(id)) {
+            return { code: ApiResponse.code.bad_request, body: { error: true, message: ApiResponse.fail.forbidden } };
+        }
         const post = await Post.findByPk(id);
         if (!post) {
             return { code: ApiResponse.code.not_found, body: { error: true, message: ApiResponse.fail.not_found('Post') } };
