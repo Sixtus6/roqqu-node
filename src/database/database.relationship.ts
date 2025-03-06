@@ -1,9 +1,9 @@
 // import { Account, Booking, WaitingList } from './database.connection';
 // import { EventsModel } from './event.model';
 
-import { Address } from "../model/address.model";
-import { Post } from "../model/post.model";
-import { User } from "../model/user.model";
+import { Address } from "../models/address.model";
+import { Post } from "../models/post.model";
+import { User } from "../models/user.model";
 
 
 

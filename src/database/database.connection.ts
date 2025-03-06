@@ -1,8 +1,8 @@
 import { DBPORT, DBNAME, } from '../config/environment.config';
 import { Sequelize } from 'sequelize';
-import { initializeUserModel, User } from '../model/user.model';
-import { Address, initializeAddressModel } from '../model/address.model';
-import { initializePostModel, Post } from '../model/post.model';
+import { initializeUserModel, User } from '../models/user.model';
+import { Address, initializeAddressModel } from '../models/address.model';
+import { initializePostModel, Post } from '../models/post.model';
 import Relationships from './database.relationship';
 
 const sequelize = new Sequelize({

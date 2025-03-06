@@ -1,5 +1,5 @@
 import ApiResponse from "../config/response.config";
-import AddressService from "../service/address.service";
+import AddressService from "../services/address.service";
 import { Request, Response } from 'express';
 
 class AddressController {

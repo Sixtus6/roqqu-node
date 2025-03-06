@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import { validationResult } from 'express-validator';
-import UserService from '../service/user.service';
+import UserService from '../services/user.service';
 import ApiResponse from '../config/response.config';
 class UserController {
     static async createUser(req: Request, res: Response): Promise<void> {

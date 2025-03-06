@@ -1,6 +1,6 @@
 import ApiResponse from "../config/response.config";
-import { Address } from "../model/address.model";
-import { User } from "../model/user.model";
+import { Address } from "../models/address.model";
+import { User } from "../models/user.model";
 
 class AddressService {
     static async getAddressByUserId(userId: number): Promise<any> {

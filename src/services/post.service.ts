@@ -1,6 +1,6 @@
 import ApiResponse from "../config/response.config";
-import { Post } from "../model/post.model";
-import { User } from "../model/user.model";
+import { Post } from "../models/post.model";
+import { User } from "../models/user.model";
 
 class PostService {
 
