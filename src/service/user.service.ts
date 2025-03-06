@@ -17,7 +17,7 @@ class UserService {
     static async getAllUsers(pageNumber: number, pageSize: number): Promise<any> {
         const { count, rows: users } = await User.findAndCountAll({
             limit: pageSize,
-            offset: pageNumber * pageSize,
+            offset: (pageNumber - 1) * pageSize,
             attributes: { exclude: ['password'] },
         });
         return {

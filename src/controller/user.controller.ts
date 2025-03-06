@@ -20,7 +20,7 @@ class UserController {
 
     static async getUsers(req: Request, res: Response): Promise<void> {
         try {
-            const pageNumber = parseInt(req.query.pageNumber as string) || 0;
+            const pageNumber = Math.max(1, parseInt(req.query.pageNumber as string) || 1); // Default to 1
             const pageSize = parseInt(req.query.pageSize as string) || 10;
             const response = await UserService.getAllUsers(pageNumber, pageSize);
             res.status(response.code).json(response.body);
