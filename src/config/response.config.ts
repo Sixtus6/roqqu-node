@@ -4,7 +4,8 @@ const ApiResponse = {
         create: 'Created successfully',
         read: 'Fetched successfully',
         register: 'Account created successfully',
-        getUser: 'Users retrieved',
+        getUsers: 'Users retrieved',
+        getUser: 'User retrieved',
         login: 'LoggedIn successfully',
         sucess_event: "Event created successfully",
 
@@ -16,8 +17,6 @@ const ApiResponse = {
         unauthorized: 'Unauthorized',
         adminUnauthorized: 'Admin Unauthorized',
         not_found: (meta: string) => `${meta} Not Found`,
-        cannot_book: 'Sorry you cant cancel an event you have not booked',
-        not_event_found: 'No Event available',
         server: 'Internal Server Error',
         forbidden: 'Forbidden',
         account_conflict: 'Account Already Exist',

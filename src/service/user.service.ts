@@ -17,15 +17,15 @@ class UserService {
             offset: pageNumber * pageSize,
             attributes: { exclude: ['password'] },
         });
-        return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.getUser, data: users } };
+        return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.getUsers, data: users } };
     }
 
     static async getUserById(id: string): Promise<any> {
         const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
         if (!user) {
-            return { code: 404, body: { error: true, message: 'User not found' } };
+            return { code: ApiResponse.code.not_found, body: { error: true, message: ApiResponse.fail.not_found("User") } };
         }
-        return { code: 200, body: { error: false, message: 'User retrieved', data: user } };
+        return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.getUsers, data: user } };
     }
 }
 
