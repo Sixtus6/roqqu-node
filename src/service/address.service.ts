@@ -18,7 +18,7 @@ class AddressService {
         }
         const existingAddress = await Address.findOne({ where: { userId: body.userId } });
         if (existingAddress) {
-            return { code: ApiResponse.code.conflict, body: { error: true, message: 'User already has an address. Use PATCH to update.' } };
+            return { code: ApiResponse.code.conflict, body: { error: true, message: ApiResponse.fail.account_conflict } };
         }
         const newAddress = await Address.create(body);
         return { code: ApiResponse.code.create, body: { error: false, message: ApiResponse.pass.create, data: newAddress } };
@@ -30,7 +30,7 @@ class AddressService {
             return { code: ApiResponse.code.not_found, body: { error: true, message: ApiResponse.fail.not_found('Address') } };
         }
         await existingAddress.update(body);
-        return { code: ApiResponse.code.success, body: { error: false, message: 'Address updated successfully', data: existingAddress } };
+        return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.update_address, data: existingAddress } };
     }
 }
 export default AddressService;

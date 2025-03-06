@@ -8,10 +8,12 @@ const ApiResponse = {
         login: 'Logged in successfully',
         success_event: 'Event created successfully',
         userCount: 'Total user count retrieved',
+        update_address: 'Address updated successfully'
     },
     fail: {
         bad_request: 'Bad Request',
         conflict: 'Data Already exists',
+        conflict_address: 'User already has an address',
         unauthorized: 'Unauthorized',
         adminUnauthorized: 'Admin Unauthorized',
         not_found: (meta: string) => `${meta} Not Found`,
