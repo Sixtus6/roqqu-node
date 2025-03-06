@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', async (req: Request, res: Response) => {
     res.status(200).json('Hello World ROQQU');
 });
+
 db.sequelize.sync({ force: !true }).then(() => {
     const server = app.listen(serverport, async () => {
         console.log(`Server is running at http://localhost:${serverport}`);

@@ -49,7 +49,9 @@ class UserService {
 
     static async getUserCount(): Promise<any> {
         const count = await User.count();
+        console.log('count');
         return { code: ApiResponse.code.success, body: { error: false, message: ApiResponse.pass.userCount, data: { count } } };
     }
+
 }
 export default UserService;
