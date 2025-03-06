@@ -59,4 +59,4 @@ Project Structure
 │       ├── address.service.ts  # Address-related business logic
 │       ├── post.service.ts  # Post-related business logic
 │       └── user.service.ts  # User-related business logic
-└── tsconfig.json  # TypeScript configuration file           # TypeScript configuration file
+└── tsconfig.json  # TypeScript configuration file
