@@ -1,6 +1,7 @@
 import { Router } from "express";
 import AddressController from "../controllers/address.controller";
-import { validateAddress, validateAddressPatch } from "../validators/address.validator";
+import { validateAddress, validateAddressPatch } from "../middleware/validators/address.validator";
+
 
 const addressRouter = Router();
 addressRouter.get('/:userID', AddressController.getAddressByUserId);

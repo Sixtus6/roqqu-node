@@ -1,6 +1,7 @@
 import { Router } from "express";
 import UserController from "../controllers/user.controller";
-import { validateUser } from "../validators/user.validator";
+import { validateUser } from "../middleware/validators/user.validator";
+
 
 const userRoute = Router();
 userRoute.post('/', validateUser, UserController.createUser);

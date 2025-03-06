@@ -1,7 +1,8 @@
 
 import { check, validationResult } from "express-validator";
-import ApiResponse from "../config/response.config";
+
 import { NextFunction, Request, Response } from "express";
+import ApiResponse from "../../config/response.config";
 
 export const validatePost = [
     check('userId').isInt().withMessage('Valid userId is required'),

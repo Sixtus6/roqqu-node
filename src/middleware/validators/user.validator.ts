@@ -1,6 +1,7 @@
 import { check, validationResult } from "express-validator";
-import ApiResponse from "../config/response.config";
+
 import { NextFunction, Request, Response } from "express";
+import ApiResponse from "../../config/response.config";
 
 export const validateUser = [
     check('name').notEmpty().withMessage('Name is required'),
