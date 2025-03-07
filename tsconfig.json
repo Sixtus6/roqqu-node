@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*.ts",
+    "tests/**/*.ts",
     "src/interfaces",
     "src/docs/authentication.doc.ts"
   ]
