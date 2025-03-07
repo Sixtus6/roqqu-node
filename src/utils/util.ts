@@ -15,3 +15,19 @@ export function generateRandomName() {
 
     return `${firstName} ${lastName}`;
 }
+
+export function randomizeAddressPayload() {
+    const streets = ['123 Main St', '456 Elm St', '789 Oak Ave', '101 Maple Rd', '222 Pine St'];
+    const cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Miami'];
+    const states = ['NY', 'CA', 'IL', 'TX', 'FL'];
+    const zipCodes = ['10001', '90001', '60601', '77001', '33101'];
+
+    return {
+        street: streets[Math.floor(Math.random() * streets.length)],
+        city: cities[Math.floor(Math.random() * cities.length)],
+        state: states[Math.floor(Math.random() * states.length)],
+        zipCode: zipCodes[Math.floor(Math.random() * zipCodes.length)]
+    };
+}
+
+
