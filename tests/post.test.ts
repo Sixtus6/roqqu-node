@@ -28,17 +28,13 @@ describe('Post API Endpoints', () => {
      */
     it('should create a new post for a user', async () => {
         const res = await request(TEST_API_URL)
-            .post('/posts')
+            .post('/post')
             .send(randomizePost(createdUserId));
-
-        console.log('Create Post Response:', res.body);
-
         expect(res.status).toBe(201);
         expect(res.body).toHaveProperty('data');
         expect(res.body.data).toHaveProperty('id');
         expect(res.body.data.userId).toBe(createdUserId);
         expect(res.body.message).toBe('Created successfully');
-
         createdPostId = res.body.data.id;
     });
 
@@ -46,10 +42,7 @@ describe('Post API Endpoints', () => {
      * ✅ Test: Retrieve all posts for a user (GET /posts?userId={userId})
      */
     it('should retrieve all posts for a user', async () => {
-        const res = await request(TEST_API_URL).get(`/posts?userId=${createdUserId}`);
-
-        console.log('Get Posts Response:', res.body);
-
+        const res = await request(TEST_API_URL).get(`/post?userId=${createdUserId}`);
         expect(res.status).toBe(200);
         expect(res.body).toHaveProperty('data');
         expect(Array.isArray(res.body.data)).toBe(true);
@@ -61,23 +54,17 @@ describe('Post API Endpoints', () => {
      * ❌ Test: Fail to retrieve posts for a non-existing user (GET /posts?userId={invalid})
      */
     it('should return 404 if user has no posts', async () => {
-        const res = await request(TEST_API_URL).get('/posts?userId=99999');
-
-        console.log('Non-Existing User Posts Response:', res.body);
-
+        const res = await request(TEST_API_URL).get('/post?userId=99999');
         expect(res.status).toBe(404);
         expect(res.body).toHaveProperty('error', true);
-        expect(res.body.message).toBe('Posts Not Found');
+        expect(res.body.message).toBe('User Not Found');
     });
 
     /**
      * ✅ Test: Delete a post by ID (DELETE /posts/{id})
      */
     it('should delete a post by ID', async () => {
-        const res = await request(TEST_API_URL).delete(`/posts/${createdPostId}`);
-
-        console.log('Delete Post Response:', res.body);
-
+        const res = await request(TEST_API_URL).delete(`/post/${createdPostId}`);
         expect(res.status).toBe(200);
         expect(res.body).toHaveProperty('message', 'Post deleted successfully');
     });
@@ -86,10 +73,7 @@ describe('Post API Endpoints', () => {
      * ❌ Test: Fail to delete a non-existing post (DELETE /posts/{id})
      */
     it('should return 404 if post does not exist', async () => {
-        const res = await request(TEST_API_URL).delete('/posts/99999');
-
-        console.log('Non-Existing Post Delete Response:', res.body);
-
+        const res = await request(TEST_API_URL).delete('/post/99999');
         expect(res.status).toBe(404);
         expect(res.body).toHaveProperty('error', true);
         expect(res.body.message).toBe('Post Not Found');
