@@ -3,7 +3,6 @@ import { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { serverport } from './config/environment.config';
-// import approuter from './routes/app.routes';
 import { db } from './database/database.connection';
 import userRoute from './routes/user.routes';
 import addressRouter from './routes/address.routes';
@@ -36,14 +35,20 @@ app.use('/user', userRoute);
 app.use('/addresses', addressRouter);
 app.use('/post', postRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get('/', async (req: Request, res: Response) => {
     res.status(200).json('Hello World ROQQU');
 });
 
-db.sequelize.sync({ force: !true }).then(() => {
-    const server = app.listen(serverport, async () => {
-        console.log(`Server is running at http://localhost:${serverport}`);
-    });
-});
+let server: any;
 
-export default app;
+// Only start the server if it's NOT running in Jest tests
+if (process.env.NODE_ENV !== 'test') {
+    db.sequelize.sync().then(() => {
+        server = app.listen(serverport, async () => {
+            console.log(`Server is running at http://localhost:${serverport}`);
+        });
+    });
+}
+
+export { app, server };
