@@ -2,4 +2,3 @@ node_modules
 public/demand
 public/proof
 coverage
-.env
