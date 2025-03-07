@@ -63,6 +63,8 @@ describe('Address API Endpoints', () => {
             .patch(`/addresses/${createdUserId}`)
             .send(randomizeAddressPayload());
         expect(res.status).toBe(200);
+        expect(res.body).toHaveProperty('data');
+        expect(res.body.data).toHaveProperty('id');
         expect(res.body.message).toBe('Address updated successfully');
         expect(res.body.data.userId).toBe(createdUserId);
     });

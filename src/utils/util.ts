@@ -31,3 +31,24 @@ export function randomizeAddressPayload() {
 }
 
 
+export function randomizePost(id: number) {
+    const titles = [
+        'My First Post', 'A Day in the Life', 'Random Thoughts',
+        'The Journey Begins', 'Tech Trends', 'Exploring the Unknown'
+    ];
+    const bodies = [
+        'This is an exciting post.', 'Sharing my thoughts today.',
+        'Here’s something interesting...', 'Learning something new!',
+        'Tech is evolving rapidly.', 'Life is full of surprises!'
+    ];
+
+    return {
+        userId: id,
+        title: titles[Math.floor(Math.random() * titles.length)],
+        body: bodies[Math.floor(Math.random() * bodies.length)],
+    };
+}
+
+
+
+

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { generateRandomName, generateRandomEmail } from '../src/utils/util';
+import { generateRandomName, generateRandomEmail, randomizePost } from '../src/utils/util';
 
 const TEST_API_URL = process.env.TEST_API_URL || 'http://localhost:2002';
 
@@ -29,19 +29,15 @@ describe('Post API Endpoints', () => {
     it('should create a new post for a user', async () => {
         const res = await request(TEST_API_URL)
             .post('/posts')
-            .send({
-                userId: createdUserId, // 👈 Associate with the created user
-                title: 'My First Post',
-                body: 'This is the content of my first post.',
-            });
+            .send(randomizePost(createdUserId));
 
         console.log('Create Post Response:', res.body);
 
         expect(res.status).toBe(201);
         expect(res.body).toHaveProperty('data');
         expect(res.body.data).toHaveProperty('id');
-        expect(res.body.data.title).toBe('My First Post');
-        expect(res.body.data.body).toBe('This is the content of my first post.');
+        expect(res.body.data.userId).toBe(createdUserId);
+        expect(res.body.message).toBe('Created successfully');
 
         createdPostId = res.body.data.id;
     });
